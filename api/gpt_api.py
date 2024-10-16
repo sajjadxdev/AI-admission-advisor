@@ -1,7 +1,7 @@
 # import requests
 
 # # Load API key for Together.AI
-# api_key = '1d5e0fb7ec8105b51725f3e3751513868a9f4ea5a105c8fd35aebf25b1f61154'
+# api_key = ' '
 
 
 # # Function to call Together.AI API
@@ -46,7 +46,7 @@
 # import openai
 
 # # Set your OpenAI API key here
-# openai.api_key = "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"  # Replace with your actual API key
+# openai.api_key = " "  # Replace with your actual API key
 
 # def ask_question(prompt):
 #     """
