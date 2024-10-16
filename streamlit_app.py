@@ -158,7 +158,7 @@ if st.session_state.step == 1:
     user_response = st.text_input("Tell us about your interests in software or computing:")
 
     if st.button("Next"):
-        if "software" in user_response.lower():  # Check if 'software' is in the input
+        if "software" or "computing" in user_response.lower():  # Check if 'software' is in the input
             st.session_state.interests = user_response
             st.session_state.step = 2  # Proceed if input is valid
         else:
@@ -176,27 +176,28 @@ if st.session_state.step == 1:
 #     if st.button("Next",'k3'):
 #         st.session_state.degree_input = user_input
 #         st.session_state.step = 3
+import streamlit as st
+
 if st.session_state.step == 2:
     degree_question = degree_choice_prompt()
     st.write(degree_question)
 
-    user_input = st.text_input("Your Answer:")
-
-    # Valid responses that match the prompt
+    # Valid response options as radio button choices
     valid_phrases = [
-        "building large-scale software systems",
-        "solving algorithmic problems",
-        "developing applications",
-        "understanding the theory behind computing"
+        "Building large-scale software systems",
+        "Solving algorithmic problems",
+        "Developing applications",
+        "Understanding the theory behind computing"
     ]
 
-    # Check if user input contains any of the valid phrases
+    # Create a radio button with valid options
+    user_choice = st.radio("Select your answer:", valid_phrases)
+
+    # Next button to proceed after selecting an option
     if st.button("Next", key='k3'):
-        if any(phrase in user_input.lower() for phrase in valid_phrases):
-            st.session_state.degree_input = user_input
-            st.session_state.step = 3  # Move to the next step if input is valid
-        else:
-            st.error("Invalid input. Please answer based on the given questions.")
+        st.session_state.degree_input = user_choice
+        st.session_state.step = 3  # Move to the next step
+
 
 # Step 3: Narrowing down subfield choices
 if st.session_state.step == 3:
